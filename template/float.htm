@@ -1,0 +1,76 @@
+{template common/header}
+<div class="tm_c" style="width:400px;">
+	<h3 class="flb">
+		<!--{if $action == 'page'}-->
+		<em>{lang dps_qrcode:page}</em>
+		<!--{else}-->
+		<em>{lang dps_qrcode:attach}</em>
+		<!--{/if}-->
+			<span>
+				<!--{if !empty($_G['gp_infloat'])}--><a
+					href="javascript:;"
+					class="flbc"
+					<!--{if $action == 'page'}-->
+					onclick="hideWindow('page')"
+					<!--{else}-->
+					onclick="hideWindow('attach')"
+					<!--{/if}-->
+					title="{lang close}">{lang close}</a><!--{/if}-->
+			</span>
+	</h3>
+	<div class="c">
+		<div class="tpclg">
+			<table cellspacing="0" cellpadding="0" width="100%">
+				<tr>
+					<th><a href="http://www.nhbxw.com" target="_blank"><img src="$long_url"
+					                                                        style="border: 1px solid #ccc;padding:5px;"/></a>
+					</th>
+					<td align="center">
+						<!--{if $action == 'page' && !empty($config[pageads])}-->
+						$config[pageads]
+						<!--{elseif $action == 'attach' && !empty($config[attachads])}-->
+						$config[attachads]
+						<!--{else}-->
+						<img src="source/plugin/dps_qrcode/images/help.gif"/>
+						<!--{/if}-->
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="o">
+		<table cellspacing="0" cellpadding="0" width="100%">
+			<tr>
+				<th>
+					<input
+						type="text"
+						class="px vm"
+						<!--{if $action == 'page'}-->
+						onclick="this.select();setCopy(this.value, '{lang dps_qrcode:success_tips_page}');"
+						<!--{else}-->
+						onclick="this.select();setCopy(this.value, '{lang dps_qrcode:success_tips_attach}');"
+						<!--{/if}-->
+						value="$short_url"
+						style="width:120px;"
+						readonly="readonly"
+						tabIndex="1"/>
+				</th>
+<!--{if $action == 'page'}-->
+
+				<td align="center"><a href="plugin.php?id=dps_qrcode" onclick="hideWindow('page')"
+				                      title="{lang dps_qrcode:shortcode}" target="_blank">{lang dps_qrcode:tips_page}</a>
+<!--{else}-->
+				<td align="center"><img
+									src="source/plugin/dps_qrcode/images/download.gif"
+									style="position:relative; top:3px;"> <a href="$this_url"
+				                                                                onclick="hideWindow('attach')"
+				                                                                target="_blank"
+				                                                                style="font-size: 14px;">$attach[filename]</a><a
+						href="home.php?mod=spacecp&ac=credit&op=buy" target="_blank" class="xi2"> ������ֵ&raquo;</a>
+	<!--{/if}-->
+</td>
+</tr>
+</table>
+</div>
+	{template common/footer}
+
